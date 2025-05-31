@@ -7,21 +7,18 @@ from asteroidfield import AsteroidField
 
 def main():
     pygame.init() # Initializer
-
     clock = pygame.time.Clock()
     dt = 0
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)) # Creating a new GUI window for game
 
     updatable = pygame.sprite.Group()
     drawbable = pygame.sprite.Group()
-    
-    Player.containers = (updatable, drawbable)
+    asteroids = pygame.sprite.Group()
 
+    Player.containers = (updatable, drawbable)
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2) # Creating a player instance
 
-    asteroids = pygame.sprite.Group()
     Asteroid.containers = (asteroids, updatable, drawbable)
-
     AsteroidField.containers = (asteroids, updatable)
     asteroidField = AsteroidField()
 
