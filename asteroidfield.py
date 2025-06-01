@@ -3,6 +3,7 @@
 import pygame
 import random
 from asteroids import Asteroid
+from circleshape import CircleShape
 from constants import *
 
 

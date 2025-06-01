@@ -1,4 +1,5 @@
 # This allows us to use code from the pygame library
+import sys
 import pygame
 from constants import *
 from player import Player
@@ -19,7 +20,7 @@ def main():
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2) # Creating a player instance
 
     Asteroid.containers = (asteroids, updatable, drawbable)
-    AsteroidField.containers = (asteroids, updatable)
+    AsteroidField.containers = updatable
     asteroidField = AsteroidField()
 
     while True: # Infinite game loop
@@ -28,6 +29,12 @@ def main():
                 return # Exit criteria
 
         updatable.update(dt)
+
+        for asteroid in asteroids:
+            if asteroid.collisions(player):
+                print("Game over!")
+                sys.exit()
+
         pygame.Surface.fill(screen, (0,0,0))
         
         for object in drawbable:
