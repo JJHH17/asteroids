@@ -26,7 +26,7 @@ def main():
     asteroidField = AsteroidField()
 
     Shot.containers = (shots, updatable, drawbable)
-    
+
 
     while True: # Infinite game loop
         for event in pygame.event.get():
@@ -39,6 +39,11 @@ def main():
             if asteroid.collisions(player):
                 print("Game over!")
                 sys.exit()
+
+            for shot in shots:
+                if asteroid.collisions(shot):
+                    shot.kill()
+                    asteroid.kill()
 
         pygame.Surface.fill(screen, (0,0,0))
         
