@@ -25,5 +25,4 @@ class CircleShape(pygame.sprite.Sprite):
 
     def collisions(self, circleShape):
         # Method used for collision detection
-        
         return self.position.distance_to(circleShape.position) <= self.radius + circleShape.radius
